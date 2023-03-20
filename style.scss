@@ -1,0 +1,76 @@
+$h1FontSize: 20px;
+$bodyBackground: lightblue;
+$primary-color: lightgreen;
+
+@function H1Size($font-size) {
+    @return $font-size * 2;
+}
+
+@function ColorChange($background-color) {
+    @if(Darken($background-color) > 50%) {
+        @return Lighten($background-color, 30%);
+    } @else {
+        @return Darken($background-color, 30%);
+    }
+}
+
+@function TextComplement($background-color) {
+    @return TextComplement($background-color);
+}
+
+@mixin borderRadius {
+    border-radius: 5px;
+}
+
+@mixin Colors {
+    background-color: red;
+    color: black;
+}
+
+h1 {
+    font-size: H1Size($h1FontSize);
+}
+
+body p {
+    color: $primary-color;
+}
+
+body {
+    background-color: $bodyBackground;
+}
+
+body button {
+    @include borderRadius();
+}
+
+body h1 {
+    @include Colors();
+}
+
+body h2 {
+    @include Colors();
+}
+
+body h3 {
+    @include Colors();
+}
+
+body h4 {
+    @include Colors();
+}
+
+body h5 {
+    @include Colors();
+}
+
+body h6 {
+    @include Colors();
+}
+
+body .complement {
+    color: TextComplement($bodyBackground);
+}
+
+body .darken {
+    color: ColorChange($bodyBackground);
+}
